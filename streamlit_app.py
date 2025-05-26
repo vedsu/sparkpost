@@ -134,7 +134,7 @@ if selection  != None:
             st.error(f"Error: {e}")
         
         campaign = st.selectbox(
-            "Select template",
+            label = "Select template",
             options=campaigns_options,
             index=0,
         )

@@ -22,9 +22,8 @@ from_date_str = None
 to_date_str = None
 campaign = None
 API_KEY = None
-
-API_KEY_OLD = st.secrets.SPARKPOST_API_KEY_OLD
-API_KEY_NEW = st.secrets.SPARKPOST_API_KEY_NEW
+API_KEY_OLD = os.getenv("SPARKPOST_API_KEY_OLD")
+API_KEY_NEW = os.getenv("SPARKPOST_API_KEY_NEW")
 
 
 # Options to Switch between Sparkpost New and Old Account
@@ -122,7 +121,6 @@ if selection  != None:
 
         
         # API Call for Campaigns 
-        campaigns_options = []
         try:
 
             response_campaign = requests.get(campaign_url, headers = headers)
@@ -134,16 +132,12 @@ if selection  != None:
 
         except Exception as e:
             st.error(f"Error: {e}")
-        if campaigns_options:
-            campaign = st.selectbox(
-                label = "Select template",
-                options=campaigns_options,
-                index=0,
-                )
-        else:
-            st.warning("No campaign templates found.")
-            campaign = None
-    
+        
+        campaign = st.selectbox(
+            label="Select template",
+            options=campaigns_options,
+            index=0,
+        )
     st.write("")
 
     # Checkbox to get the sample data

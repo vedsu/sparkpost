@@ -21,6 +21,7 @@ events = None
 from_date_str = None
 to_date_str = None
 campaign = None
+campaigns_options = []
 API_KEY = None
 API_KEY_OLD = os.getenv("SPARKPOST_API_KEY_OLD")
 API_KEY_NEW = os.getenv("SPARKPOST_API_KEY_NEW")
